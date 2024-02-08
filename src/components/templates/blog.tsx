@@ -11,9 +11,11 @@ const Blog = ({ props }: { props: BlogProps }) => {
           className="text-xl lg:text-3xl font-bold leading-relaxed hover:underline
           underline-offset-2"
         >
-          <Link to="">{props.title}</Link>
+          <Link to={props.id.toString()}>{props.title}</Link>
         </h2>
-        <p className="text-gray-400">{DateString(props.created_at)}</p>
+        <p className="text-gray-700 dark:text-gray-400">
+          {DateString(props.created_at)}
+        </p>
         <div className="my-2 w-full flex gap-2 lg:gap-3">
           {props.tag.map((tag, index) => (
             <Tag key={index} value={tag} />

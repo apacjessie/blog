@@ -3,7 +3,7 @@ import Blog from "./blog";
 
 const BlogList = () => {
   return (
-    <section className="flex flex-col gap-12 w-full mt-16">
+    <section className="flex flex-col gap-12 md:gap-16 w-full mt-16">
       {blogs.map((blog, index) => (
         <Blog key={index} props={blog} />
       ))}
