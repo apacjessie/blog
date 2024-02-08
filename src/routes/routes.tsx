@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "@/pages/home";
 import { ReactNode } from "react";
+import Article from "@/pages/article";
 
 const AppRoutes = ({ children }: { children: ReactNode }) => {
   return (
@@ -8,6 +9,7 @@ const AppRoutes = ({ children }: { children: ReactNode }) => {
       {children}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/:id" element={<Article />} />
       </Routes>
     </Router>
   );

@@ -8,3 +8,33 @@
     @apply dark:bg-dark  bg-white dark:text-white;
   }
 }
+
+@layer components {
+  .article {
+    @apply mt-8 flex flex-col;
+  }
+  .article h1 {
+    @apply text-3xl leading-snug font-bold;
+  }
+  .article p {
+    @apply text-lg;
+  }
+
+  .article header {
+    @apply pt-1 flex flex-col gap-1;
+  }
+  .article h2 {
+    @apply text-3xl pt-16 pb-5;
+  }
+
+  .article pre code {
+    @apply my-3;
+  }
+  .article h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-[400] tracking-wider;
+  }
+}
