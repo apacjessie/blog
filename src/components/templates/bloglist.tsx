@@ -1,9 +1,8 @@
 import Blog from "./blog";
-import { useBlogs } from "@/hooks/useBlogs";
 import { useActiveTag } from "@/hooks/useActiveTag";
+import { BlogProps } from "@/utils/types";
 
-const BlogList = () => {
-  const { blogs } = useBlogs();
+const BlogList = ({ blogs }: { blogs: BlogProps[] }) => {
   const { activeTag } = useActiveTag();
 
   const filteredBlogs =

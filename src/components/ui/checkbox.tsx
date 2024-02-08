@@ -21,25 +21,28 @@ const Checkbox: React.FC<CheckboxProps> = ({ id, ...props }) => {
   };
 
   return (
-    <label
-      htmlFor={id}
-      className={`border-2 px-2 cursor-pointer relative rounded-sm
+    <>
+      <label
+        htmlFor={id}
+        className={`border-2 px-2 cursor-pointer relative rounded-sm focus-within:outline
+        outline-offset-4
       ${isChecked ? "bg-blue-500 border-blue-500" : "dark:border-white border-black"}`}
-    >
-      <input
-        id={id}
-        type="checkbox"
-        className="opacity-0 pointer-events-none absolute"
-        checked={isChecked}
-        onChange={handleChanges}
-        {...props}
-      />
-      <span
-        className={`${isChecked && "dark:text-black text-white"} select-none`}
       >
-        {props.value}
-      </span>
-    </label>
+        <input
+          id={id}
+          type="checkbox"
+          className={`sr-only group opacity-0 pointer-events-none absolute peer/${id}`}
+          checked={isChecked}
+          onChange={handleChanges}
+          {...props}
+        />
+        <span
+          className={`${isChecked && "dark:text-black text-white"} select-none`}
+        >
+          {props.value}
+        </span>
+      </label>
+    </>
   );
 };
 
