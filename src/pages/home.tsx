@@ -1,21 +1,24 @@
 import BlogList from "@/components/templates/bloglist";
 import Searchbar from "@/components/templates/searchbar";
 import Tags from "@/components/templates/tags";
-import { useBlogs } from "@/hooks/useBlogs";
-import { blogs as mock } from "@/utils/mock";
-import { useEffect } from "react";
+import { BlogProps } from "@/utils/types";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Home = () => {
-  const { blogs, setBlogs } = useBlogs();
+  const [blogs, setBlogs] = useState<BlogProps[]>([]);
 
   useEffect(() => {
-    setBlogs(mock);
+    (async () => {
+      const res = await axios.get("http://localhost:3000/api/blog");
+      setBlogs(res.data);
+    })();
   }, []);
 
   return (
     <>
       <Searchbar />
-      <Tags />
+      <Tags blogs={blogs} />
       <BlogList blogs={blogs} />
     </>
   );

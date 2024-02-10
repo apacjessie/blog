@@ -7,7 +7,7 @@ const BlogList = ({ blogs }: { blogs: BlogProps[] }) => {
 
   const filteredBlogs =
     activeTag.length > 0
-      ? blogs.filter((blog) => blog.tag.some((tag) => activeTag.includes(tag)))
+      ? blogs.filter((blog) => blog.tags.some((tag) => activeTag.includes(tag)))
       : blogs;
 
   return (

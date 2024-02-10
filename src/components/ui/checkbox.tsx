@@ -13,10 +13,10 @@ const Checkbox: React.FC<CheckboxProps> = ({ id, ...props }) => {
     const tagExist = activeTag.find((tag) => tag === (props.value as string));
     if (tagExist) {
       setActiveTag(activeTag.filter((tag) => tag !== (props.value as string)));
-      setIsChecked((prev) => (prev = false));
+      setIsChecked(false);
     } else {
       setActiveTag([...activeTag, props.value as string]);
-      setIsChecked((prev) => (prev = true));
+      setIsChecked(true);
     }
   };
 
@@ -24,9 +24,9 @@ const Checkbox: React.FC<CheckboxProps> = ({ id, ...props }) => {
     <>
       <label
         htmlFor={id}
-        className={`border-2 px-2 cursor-pointer relative rounded-sm focus-within:outline
-        outline-offset-4
-      ${isChecked ? "bg-blue-500 border-blue-500" : "dark:border-white border-black"}`}
+        className={`border-2 px-2 cursor-pointer relative rounded-sm focus-within:ring
+        ring-offset-2 
+        ${isChecked ? "bg-blue-500 border-blue-500" : "dark:border-white border-black"}`}
       >
         <input
           id={id}
@@ -34,11 +34,10 @@ const Checkbox: React.FC<CheckboxProps> = ({ id, ...props }) => {
           className={`sr-only group opacity-0 pointer-events-none absolute peer/${id}`}
           checked={isChecked}
           onChange={handleChanges}
+          aria-label={`checkbox-${props.value as string}`}
           {...props}
         />
-        <span
-          className={`${isChecked && "dark:text-black text-white"} select-none`}
-        >
+        <span className={`${isChecked && "text-white"} select-none`}>
           {props.value}
         </span>
       </label>

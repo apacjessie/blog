@@ -1,10 +1,11 @@
 type BlogProps = {
-  id: number;
+  _id: string;
   title: string;
-  desc: string;
-  created_at: string | number;
-  tag: Array<string>;
+  description: string;
+  createdAt: string;
+  tags: Array<string>;
   content: string;
+  path: string;
 };
 
 export type { BlogProps };
