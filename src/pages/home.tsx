@@ -10,7 +10,7 @@ const Home = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await axios.get("http://localhost:3000/api/blog");
+      const res = await axios.get(`${import.meta.env.VITE_BLOG_API}/blog`);
       setBlogs(res.data);
     })();
   }, []);

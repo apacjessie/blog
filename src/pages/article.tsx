@@ -19,7 +19,9 @@ const Article = () => {
   useEffect(() => {
     (async () => {
       if (!id) return;
-      const res = await axios.get(`http://localhost:3000/api/blog/${id}`);
+      const res = await axios.get(
+        `${import.meta.env.VITE_BLOG_API}/blog/${id}`,
+      );
       setArticle(res.data);
     })();
   }, [id]);
