@@ -1,4 +1,4 @@
-const SkeletonBlogList = () => {
+const Loading = () => {
   return (
     <div role="status">
       <svg
@@ -22,4 +22,4 @@ const SkeletonBlogList = () => {
   );
 };
 
-export default SkeletonBlogList;
+export default Loading;

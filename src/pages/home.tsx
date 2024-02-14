@@ -1,25 +1,38 @@
+import SkeletonBlogList from "@/components/skeleton/blog-list";
 import BlogList from "@/components/templates/bloglist";
 import Searchbar from "@/components/templates/searchbar";
 import Tags from "@/components/templates/tags";
-import { BlogProps } from "@/utils/types";
+import Loading from "@/components/ui/loading";
+import { useBlogs } from "@/hooks/useBlogs";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  const [blogs, setBlogs] = useState<BlogProps[]>([]);
+  const { blogs, setBlogs } = useBlogs();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     (async () => {
-      const res = await axios.get(`${import.meta.env.VITE_BLOG_API}/blog`);
-      setBlogs(res.data);
+      await axios
+        .get(`${import.meta.env.VITE_BLOG_API}/blog`)
+        .then((res) => setBlogs(res.data))
+        .then(() => setLoading(false));
     })();
   }, []);
 
   return (
     <>
       <Searchbar />
-      <Tags blogs={blogs} />
-      <BlogList blogs={blogs} />
+      {loading ? (
+        <div className="mt-24 w-full flex items-center justify-center">
+          <Loading />
+        </div>
+      ) : (
+        <>
+          <Tags blogs={blogs} />
+          <BlogList blogs={blogs} />
+        </>
+      )}
     </>
   );
 };

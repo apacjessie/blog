@@ -1,6 +1,4 @@
-import { useBlogs } from "@/hooks/useBlogs";
 import Checkbox from "../ui/checkbox";
-import { useActiveTag } from "@/hooks/useActiveTag";
 import { BlogProps } from "@/utils/types";
 
 const Tags = ({ blogs }: { blogs: BlogProps[] }) => {
