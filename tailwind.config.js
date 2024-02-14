@@ -6,7 +6,7 @@ export default {
       typography: {
         DEFAULT: {
           css: {
-            maxwidth: "none",
+            maxWidth: "none",
             pre: null,
             code: null,
             "code::before": null,
