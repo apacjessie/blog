@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { BlogProps } from "@/utils/types";
 import axios from "axios";
 import ConfiguredMarkdown from "@/components/templates/markdown";
+import Loading from "@/components/ui/loading";
 
 const Article = () => {
+  const { id } = useParams();
   const [article, setArticle] = useState<BlogProps>({
     _id: "",
     createdAt: "",
@@ -14,21 +16,28 @@ const Article = () => {
     content: "",
     path: "",
   });
-  const { id } = useParams();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     (async () => {
       if (!id) return;
-      const res = await axios.get(
-        `${import.meta.env.VITE_BLOG_API}/blog/${id}`,
-      );
-      setArticle(res.data);
+
+      await axios
+        .get(`${import.meta.env.VITE_BLOG_API}/blog/${id}`)
+        .then((res) => setArticle(res.data))
+        .finally(() => setLoading(false));
     })();
   }, [id]);
 
   return (
     <article className="prose dark:prose-invert max-w-none py-24">
-      <ConfiguredMarkdown>{article.content}</ConfiguredMarkdown>
+      {loading ? (
+        <div className="w-full flex items-center justify-center">
+          <Loading />
+        </div>
+      ) : (
+        <ConfiguredMarkdown>{article.content}</ConfiguredMarkdown>
+      )}
     </article>
   );
 };
