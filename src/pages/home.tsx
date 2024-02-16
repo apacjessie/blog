@@ -1,4 +1,3 @@
-import SkeletonBlogList from "@/components/skeleton/blog-list";
 import BlogList from "@/components/templates/bloglist";
 import Searchbar from "@/components/templates/searchbar";
 import Tags from "@/components/templates/tags";
