@@ -23,7 +23,7 @@ const Article = () => {
       if (!id) return;
 
       await axios
-        .get(`${import.meta.env.VITE_BLOG_API}/blog/${id}`)
+        .get(`https://blog-cms-gamma.vercel.app/blog/${id}`)
         .then((res) => setArticle(res.data))
         .finally(() => setLoading(false));
     })();
