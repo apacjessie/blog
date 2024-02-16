@@ -5,7 +5,7 @@ import Tag from "../ui/tag";
 
 const Blog = ({ props }: { props: BlogProps }) => {
   return (
-    <article className="flex flex-col gap-1 lg:gap-2">
+    <article className="flex flex-col gap-1">
       <header>
         <h2
           className="text-xl lg:text-3xl font-bold leading-relaxed hover:underline
