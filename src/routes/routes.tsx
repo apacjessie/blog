@@ -8,10 +8,8 @@ const AppRoutes = ({ children }: { children: ReactNode }) => {
     <Router>
       {children}
       <Routes>
-        <Route>
-          <Route index element={<Home />} />
-          <Route path="/:id" element={<Article />} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/article/:id" element={<Article />} />
       </Routes>
     </Router>
   );

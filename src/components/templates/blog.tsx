@@ -11,7 +11,7 @@ const Blog = ({ props }: { props: BlogProps }) => {
           className="text-xl lg:text-3xl font-bold leading-relaxed hover:underline
           underline-offset-2"
         >
-          <Link to={`/${props.path}`}>{props.title}</Link>
+          <Link to={`/article/${props.path}`}>{props.title}</Link>
         </h2>
         <p className="text-gray-700 dark:text-gray-400">
           {DateString(props.createdAt)}
@@ -24,7 +24,7 @@ const Blog = ({ props }: { props: BlogProps }) => {
       </header>
       <p className="lg:text-lg">{props.description}</p>
       <Link
-        to={`/${props.path}`}
+        to={`/article/${props.path}`}
         className="text-blue-500 hover:underline underline-offset-2 w-fit"
       >
         Read more
