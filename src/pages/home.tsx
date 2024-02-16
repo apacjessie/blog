@@ -6,6 +6,8 @@ import { useBlogs } from "@/hooks/useBlogs";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+const API_URL = `${import.meta.env.VITE_BLOG_API}/blog`;
+
 const Home = () => {
   const { blogs, setBlogs } = useBlogs();
   const [loading, setLoading] = useState<boolean>(true);
@@ -13,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     (async () => {
       await axios
-        .get(`${import.meta.env.VITE_BLOG_API}/blog`)
+        .get(API_URL)
         .then((res) => setBlogs(res.data))
         .then(() => setLoading(false));
     })();
